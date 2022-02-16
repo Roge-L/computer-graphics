@@ -1,5 +1,6 @@
 #include "ray_intersect_triangle_mesh_brute_force.h"
 #include "ray_intersect_triangle.h"
+#include <limits>
 
 bool ray_intersect_triangle_mesh_brute_force(
   const Ray & ray,
@@ -11,9 +12,28 @@ bool ray_intersect_triangle_mesh_brute_force(
   int & hit_f)
 {
   ////////////////////////////////////////////////////////////////////////////
-  // Replace with your code here:
-  hit_t = 0;
-  hit_f = 0;
-  return false;
+  double curr_tval = std::numeric_limits<double>::infinity();  
+
+  hit_f = -1;
+  for (int i = 0; i < F.rows(); i++) {
+    if (ray_intersect_triangle(ray, 
+                               V.row(F.row(i)(0)), 
+                               V.row(F.row(i)(1)), 
+                               V.row(F.row(i)(2)),
+                               min_t,
+                               max_t,
+                               hit_t)) {
+      if (hit_t < curr_tval) {
+        curr_tval = hit_t;
+        hit_f = i;
+      }
+    }
+  }
+  
+  if (hit_f == -1) {  
+    return false;  
+  }
+  hit_t = curr_tval;
+  return true;
   ////////////////////////////////////////////////////////////////////////////
 }

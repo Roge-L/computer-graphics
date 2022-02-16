@@ -1,5 +1,13 @@
 #include "point_AABBTree_squared_distance.h"
 #include <queue> // std::priority_queue
+#include <limits>
+
+class comparator {
+  bool operator(std::pair<double, std::shared_ptr<Object>> a
+                , std::pair<double, std::shared_ptr<Object>> b) {
+                  return a.first > b.first;
+                }
+}
 
 bool point_AABBTree_squared_distance(
     const Eigen::RowVector3d & query,
@@ -10,7 +18,7 @@ bool point_AABBTree_squared_distance(
     std::shared_ptr<Object> & descendant)
 {
   ////////////////////////////////////////////////////////////////////////////
-  // Replace with your code here
+
   sqrd = 0;
   return false;
   ////////////////////////////////////////////////////////////////////////////

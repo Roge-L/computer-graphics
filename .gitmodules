@@ -1,0 +1,3 @@
+[submodule "computer-graphics-bounding-volume-hierarchy-master/libigl"]
+	path = computer-graphics-bounding-volume-hierarchy-master/libigl
+	url = https://github.com/libigl/libigl.git

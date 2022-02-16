@@ -8,8 +8,19 @@ void nearest_neighbor_brute_force(
   double & sqrD)
 {
   ////////////////////////////////////////////////////////////////////////////
-  // Replace with your code here:
-  I = -1;
-  sqrD = 0;
+  sqrD = std::numeric_limits<double>::infinity();
+  for (int i = 0; i < points.rows(); i++) {
+    if ((pow(points(i, 0) - query(0), 2) 
+            + pow(points(i, 1) - query(1), 2) 
+            + pow(points(i, 2) - query(2), 2)
+            * 1.0)
+            < sqrD) {
+      sqrD = (pow(points(i, 0) - query(0), 2) 
+                  + pow(points(i, 1) - query(1), 2) 
+                  + pow(points(i, 2) - query(2), 2)
+                  * 1.0);
+      I = i;
+    }
+  }
   ////////////////////////////////////////////////////////////////////////////
 }
