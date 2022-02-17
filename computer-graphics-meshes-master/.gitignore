@@ -33,6 +33,3 @@
 *.swp
 build/*
 *.DS_Store
-
-# libigl files
-libigl/*
