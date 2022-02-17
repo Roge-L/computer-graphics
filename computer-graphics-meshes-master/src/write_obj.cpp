@@ -14,7 +14,32 @@ bool write_obj(
 {
   assert((F.size() == 0 || F.cols() == 3 || F.cols() == 4) && "F must have 3 or 4 columns");
   ////////////////////////////////////////////////////////////////////////////
-  // Add your code here:
-  ////////////////////////////////////////////////////////////////////////////
-  return false;
+  std::ofstream myfile(filename);  
+  if (myfile.is_open()) {  
+      
+    for (int i = 0; i < V.rows(); i++) {  
+      myfile << "v " << V.row(i) << std::endl;  
+    }  
+  
+    for (int i = 0; i < UV.rows(); i++) {  
+      myfile << "vt " << UV.row(i) << std::endl;  
+    }  
+  
+    for (int i = 0; i < NV.rows(); i++) {  
+      myfile << "vn " << NV.row(i) << std::endl;  
+    }  
+  
+    for (int i = 0; i < F.rows(); i++) {  
+      myfile << "f";  
+      for (int j = 0; j < F.cols(); j++) {  
+        myfile << " " << F(i, j) << "/" << UF(i, j) << "/" << NF(i, j);  
+      }  
+      myfile << std::endl;  
+    }  
+  
+    myfile.close();  
+  }  
+  ////////////////////////////////////////////////////////////////////////////  
+  return false;  
+
 }
