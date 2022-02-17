@@ -7,3 +7,6 @@
 [submodule "libigl"]
 	path = libigl
 	url = https://github.com/libigl/libigl.git
+[submodule "computer-graphics-meshes-master/--force"]
+	path = computer-graphics-meshes-master/--force
+	url = https://github.com/libigl/libigl.git
